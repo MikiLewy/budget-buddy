@@ -1,3 +1,103 @@
 {
-  "extends": "next/core-web-vitals"
+  "root": true,
+  "parserOptions": {
+    "project": ["./tsconfig.json", "./vite.config.ts"]
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "import", "unused-imports"],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "eslint-config-airbnb-typescript",
+    "prettier",
+    "plugin:prettier/recommended",
+    "plugin:react-hooks/recommended",
+    "eslint:recommended"
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "moduleDirectory": ["node_modules", "src/"]
+      }
+    }
+  },
+  "rules": {
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@next/next/no-img-element": "off",
+    "unused-imports/no-unused-imports": "error",
+    "import/no-extraneous-dependencies": "off",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "no-eq-null": "warn",
+    "import/order": [
+      "warn",
+      {
+        "groups": [["builtin", "external"], "internal", "parent", ["sibling", "index"], "object"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "complexity": "warn",
+    "no-console": ["warn"],
+    "import/newline-after-import": [
+      "error",
+      {
+        "count": 1
+      }
+    ],
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": "const",
+        "next": "return"
+      },
+      {
+        "blankLine": "always",
+        "prev": "let",
+        "next": "return"
+      },
+      {
+        "blankLine": "always",
+        "prev": "function",
+        "next": "return"
+      },
+      {
+        "blankLine": "always",
+        "prev": "block",
+        "next": "return"
+      },
+      {
+        "blankLine": "always",
+        "prev": "export",
+        "next": "export"
+      }
+    ],
+    "@typescript-eslint/no-empty-interface": [
+      "error",
+      {
+        "allowSingleExtends": true
+      }
+    ]
+  }
 }
