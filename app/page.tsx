@@ -1,8 +1,13 @@
+import { auth } from '@clerk/nextjs';
 import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
 
-export default function Home() {
+export default async function HomePage() {
+  const { userId } = auth();
+
+  const getStartedHref = userId ? '/dashboard' : '/new-user';
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-black/95 ">
       <div className="flex flex-col gap-4 max-w-[400px] md:max-w-[600px]">
@@ -11,10 +16,10 @@ export default function Home() {
         </h1>
         <p className="text-base md:text-xl  text-white/85">
           Seamlessly manage your spending, savings, and investments all in one place. Take command
-          of your finances like never before—begin your journey today!
+          of your finances like never before. Begin your journey today!
         </p>
         <Button variant="secondary" className="mr-auto" asChild>
-          <Link href={'/sign-in'}>Get started</Link>
+          <Link href={getStartedHref}>Get started</Link>
         </Button>
       </div>
     </main>

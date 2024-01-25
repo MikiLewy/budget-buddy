@@ -98,6 +98,7 @@
       {
         "allowSingleExtends": true
       }
-    ]
+    ],
+    "no-undef": "off"
   }
 }
