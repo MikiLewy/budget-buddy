@@ -1,6 +1,7 @@
 import { currentUser } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 
+import Loader from '@/components/atoms/loader';
 import { prisma } from '@/utils/db';
 
 const createNewUser = async () => {
@@ -31,7 +32,11 @@ const createNewUser = async () => {
 const NewUserPage = async () => {
   await createNewUser();
 
-  return <div> </div>;
+  return (
+    <main className="h-screen flex w-screen justify-center items-center">
+      <Loader />
+    </main>
+  );
 };
 
 export default NewUserPage;
